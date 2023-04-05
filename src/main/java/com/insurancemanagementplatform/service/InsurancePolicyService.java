@@ -17,5 +17,5 @@ public interface InsurancePolicyService {
 
     void deleteInsurancePolicy(Long policyId);
 
-//    InsurancePolicy getInsurancePolicyByClientId(Long clientId);
+    InsurancePolicy getInsurancePolicyByClientId(Long clientId);
 }

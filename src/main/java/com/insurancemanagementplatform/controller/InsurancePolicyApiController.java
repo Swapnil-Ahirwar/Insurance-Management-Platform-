@@ -41,9 +41,9 @@ public class InsurancePolicyApiController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<InsurancePolicy> getInsurancePolicyById(@PathVariable("id") Long userId){
-        InsurancePolicy user = insurancePolicyService.getInsurancePolicyById(userId);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    public ResponseEntity<InsurancePolicy> getInsurancePolicyById(@PathVariable("id") Long policyId){
+        InsurancePolicy insurancePolicy = insurancePolicyService.getInsurancePolicyById(policyId);
+        return new ResponseEntity<>(insurancePolicy, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

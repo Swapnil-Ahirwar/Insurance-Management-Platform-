@@ -2,6 +2,7 @@ package com.insurancemanagementplatform.service.impl;
 
 import com.insurancemanagementplatform.entity.InsurancePolicy;
 import com.insurancemanagementplatform.repository.InsurancePolicyRepository;
+import com.insurancemanagementplatform.repository.UserRepository;
 import com.insurancemanagementplatform.service.InsurancePolicyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class InsurancePolicyServiceImpl implements InsurancePolicyService {
 
     @Autowired
     InsurancePolicyRepository insurancePolicyRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
 
     @Override
@@ -62,8 +66,8 @@ public class InsurancePolicyServiceImpl implements InsurancePolicyService {
         insurancePolicyRepository.deleteById(policyId);
     }
 
-//    @Override
-//    public InsurancePolicy getInsurancePolicyByClientId(Long clientId) {
-//        return insurancePolicyRepository.getInsurancePolicyByClientId(clientId);
-//    }
+    @Override
+    public InsurancePolicy getInsurancePolicyByClientId(Long clientId) {
+        return insurancePolicyRepository.getInsurancePolicyByClientId(clientId);
+    }
 }
