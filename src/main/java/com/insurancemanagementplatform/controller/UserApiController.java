@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/clients")
 public class UserApiController {
 
     @Autowired
@@ -20,17 +21,17 @@ public class UserApiController {
         return "Hello String";
     }
 
-    @GetMapping("/users")
+    @GetMapping("")
     public List<User> getUsers(){
         return userService.getUsers();
     }
 
-    @PostMapping("/user/add")
+    @PostMapping("")
     public User adduser(@RequestBody User user){
         return userService.addUser(user);
     }
 
-    @PutMapping("user/{id}/edit")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") Long userId, @RequestBody User user){
         user.setId(userId);
         User updatedUser = userService.updateUser(user);
@@ -38,13 +39,13 @@ public class UserApiController {
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    @GetMapping("user/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long userId){
         User user = userService.getUserById(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @DeleteMapping("/user/{id}/delete")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") Long userId){
         userService.deleteUser(userId);
         return new ResponseEntity<>("User Successfully deleted!", HttpStatus.OK);
